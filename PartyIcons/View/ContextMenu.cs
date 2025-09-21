@@ -65,9 +65,9 @@ public sealed class ContextMenu : IDisposable
         }
 
         if (_configuration.UseContextMenuSubmenu) {
-            var menuName = "Set Role";
+            var menuName = "设置职责";
             if (characterInfo.AssignedRole is { } assignedRole) {
-                menuName = $"Change Role ({_stylesheet.GetRoleName(assignedRole)})";
+                menuName = $"更改职责 ({_stylesheet.GetRoleName(assignedRole)})";
             }
 
             args.AddMenuItem(new MenuItem
@@ -83,7 +83,7 @@ public sealed class ContextMenu : IDisposable
                     if (items.Count == 0) {
                         items.Add(new MenuItem
                         {
-                            Name = "No actions available",
+                            Name = "无可用操作",
                             IsEnabled = false
                         });
                     }
@@ -114,7 +114,7 @@ public sealed class ContextMenu : IDisposable
         if (characterInfo.SuggestedRole is { } role) {
             list.Add(new MenuItem
             {
-                Name = $"Assign {_stylesheet.GetRoleName(role)} (suggested)",
+                Name = $"分配 {_stylesheet.GetRoleName(role)} （建议）",
                 Prefix = SeIconChar.ArrowRight,
                 PrefixColor = 31,
                 Priority = 100,
@@ -129,7 +129,7 @@ public sealed class ContextMenu : IDisposable
             var swappedRole = RoleIdUtils.Counterpart(role);
             list.Add(new MenuItem
             {
-                Name = $"Swap to {_stylesheet.GetRoleName(swappedRole)}",
+                Name = $"切换到 {_stylesheet.GetRoleName(swappedRole)}",
                 Prefix = SeIconChar.ArrowRight,
                 PrefixColor = 3,
                 Priority = 101,
@@ -149,7 +149,7 @@ public sealed class ContextMenu : IDisposable
 
             list.Add(new MenuItem
             {
-                Name = $"Assign {roleName}",
+                Name = $"分配 {roleName}",
                 Prefix = (SeIconChar)PlayerStylesheet.BoxedCharacter(roleName[0]),
                 PrefixColor = PlayerStylesheet.GetRoleColor(role),
                 Priority = 101 + (int)role,
@@ -164,7 +164,7 @@ public sealed class ContextMenu : IDisposable
             var staticName = $"{characterInfo.Name}@{worldName}";
             list.Add(new MenuItem
             {
-                Name = $"Save as static",
+                Name = $"保存为固定分配",
                 Prefix = SeIconChar.LevelDe,
                 PrefixColor = 21,
                 Priority = 110,

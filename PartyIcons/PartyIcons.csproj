@@ -1,6 +1,6 @@
-﻿<Project Sdk="Dalamud.NET.Sdk/13.0.0">
+﻿<Project Sdk="Dalamud.CN.NET.Sdk/13.1.0">
     <PropertyGroup>
-        <Authors>shdwp, abashby, nebel</Authors>
+        <Authors>Nag0mi</Authors>
         <Company>shdwp</Company>
         <Description>PartyIcons plugin</Description>
         <Copyright>shdwp 2021</Copyright>

@@ -10,14 +10,14 @@ public static class UiNames
     {
         return mode switch
         {
-            NameplateMode.Default => "Game default",
-            NameplateMode.Hide => "Hide",
-            NameplateMode.BigJobIcon => "Big job icon",
-            NameplateMode.SmallJobIcon => "Small job icon and name",
-            NameplateMode.SmallJobIconAndRole => "Small job icon, role and name",
-            NameplateMode.BigJobIconAndPartySlot => "Big job icon and party number",
-            NameplateMode.RoleLetters => "Role letters",
-            _ => $"Unknown ({(int)mode}/{mode.ToString()})"
+            NameplateMode.Default => "游戏默认",
+            NameplateMode.Hide => "隐藏",
+            NameplateMode.BigJobIcon => "大职业图标",
+            NameplateMode.SmallJobIcon => "小职业图标和姓名",
+            NameplateMode.SmallJobIconAndRole => "小职业图标、职责和姓名",
+            NameplateMode.BigJobIconAndPartySlot => "大职业图标和队伍编号",
+            NameplateMode.RoleLetters => "职责字母",
+            _ => $"未知 ({(int)mode}/{mode.ToString()})"
         };
     }
 
@@ -25,13 +25,13 @@ public static class UiNames
     {
         return zoneType switch
         {
-            ZoneType.Overworld => "Overworld",
-            ZoneType.Dungeon => "Dungeon",
-            ZoneType.Raid => "Raid",
-            ZoneType.AllianceRaid => "Alliance Raid",
-            ZoneType.ChaoticRaid => "Chaotic Raid",
-            ZoneType.FieldOperation => "Field Operation",
-            _ => $"Unknown ({(int)zoneType}/{zoneType.ToString()})"
+            ZoneType.Overworld => "大世界",
+            ZoneType.Dungeon => "地下城",
+            ZoneType.Raid => "团队任务",
+            ZoneType.AllianceRaid => "联盟团队任务",
+            ZoneType.ChaoticRaid => "野队团队任务",
+            ZoneType.FieldOperation => "野外作战",
+            _ => $"未知 ({(int)zoneType}/{zoneType.ToString()})"
         };
     }
 
@@ -39,11 +39,11 @@ public static class UiNames
     {
         return config.Preset switch
         {
-            StatusPreset.Custom => config.Name ?? "<unnamed>",
-            StatusPreset.Overworld => "Overworld",
-            StatusPreset.Instances => "Instances",
-            StatusPreset.FieldOperations => "Field Operations",
-            StatusPreset.OverworldLegacy => "Overworld (Legacy)",
+            StatusPreset.Custom => config.Name ?? "<未命名>",
+            StatusPreset.Overworld => "大世界",
+            StatusPreset.Instances => "副本",
+            StatusPreset.FieldOperations => "野外作战",
+            StatusPreset.OverworldLegacy => "大世界（传统）",
             _ => config.Preset + "/" + config.Name + "/" + config.Id
         };
     }
@@ -71,12 +71,12 @@ public static class UiNames
     {
         return id switch
         {
-            IconSetId.EmbossedFramed => "Framed, role colored",
-            IconSetId.EmbossedFramedSmall => "Framed, role colored (small)",
-            IconSetId.Gradient => "Gradient, role colored",
-            IconSetId.Glowing => "Glowing",
-            IconSetId.Embossed => "Embossed",
-            IconSetId.Inherit => "<Use global setting>",
+            IconSetId.EmbossedFramed => "带框架，职责着色",
+            IconSetId.EmbossedFramedSmall => "带框架，职责着色（小）",
+            IconSetId.Gradient => "渐变，职责着色",
+            IconSetId.Glowing => "发光",
+            IconSetId.Embossed => "浮雕",
+            IconSetId.Inherit => "<使用全局设置>",
             _ => id.ToString()
         };
     }
@@ -85,10 +85,10 @@ public static class UiNames
     {
         return mode switch
         {
-            ChatMode.GameDefault => "Game Default",
-            ChatMode.Role => "Role",
-            ChatMode.Job => "Job abbreviation",
-            _ => throw new ArgumentException($"Unknown chat mode {mode}")
+            ChatMode.GameDefault => "游戏默认",
+            ChatMode.Role => "职责",
+            ChatMode.Job => "职业缩写",
+            _ => throw new ArgumentException($"未知聊天模式 {mode}")
         };
     }
 
@@ -96,10 +96,10 @@ public static class UiNames
     {
         return style switch
         {
-            RoleDisplayStyle.None => "None",
-            RoleDisplayStyle.Role => "Role",
-            RoleDisplayStyle.PartyNumber => "Party Number",
-            _ => throw new ArgumentException($"Unknown RoleDisplayStyle {style}")
+            RoleDisplayStyle.None => "无",
+            RoleDisplayStyle.Role => "职责",
+            RoleDisplayStyle.PartyNumber => "队伍编号",
+            _ => throw new ArgumentException($"未知职责显示样式 {style}")
         };
     }
 }
