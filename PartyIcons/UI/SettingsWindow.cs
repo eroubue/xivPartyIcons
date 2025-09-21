@@ -37,38 +37,38 @@ public sealed class SettingsWindow : Window
         using var tabBar = ImRaii.TabBar("##tabbar");
         if (tabBar) {
             var text = _flashingText.PushColor(Plugin.Settings.TestingMode);
-            using (var tab = ImRaii.TabItem("General")) {
+            using (var tab = ImRaii.TabItem("整体")) {
                 text.Dispose();
                 if (tab) {
                     using var contents = ImRaii.Child("##general_content");
                     _generalTab.Draw();
                 }
             }
-            using (var tab = ImRaii.TabItem("Nameplates")) {
+            using (var tab = ImRaii.TabItem("名牌")) {
                 if (tab) {
                     using var contents = ImRaii.Child("##nameplates_content");
                     _nameplateTab.Draw();
                 }
             }
-            using (var tab = ImRaii.TabItem("Appearance")) {
+            using (var tab = ImRaii.TabItem("外观")) {
                 if (tab) {
                     using var contents = ImRaii.Child("##appearance_content");
                     _appearanceTab.Draw();
                 }
             }
-            using (var tab = ImRaii.TabItem("Status Icons")) {
+            using (var tab = ImRaii.TabItem("状态图标")) {
                 if (tab) {
                     using var contents = ImRaii.Child("##statuses_content");
                     StatusTab.Draw();
                 }
             }
-            using (var tab = ImRaii.TabItem("Chat Names")) {
+            using (var tab = ImRaii.TabItem("聊天名字")) {
                 if (tab) {
                     using var contents = ImRaii.Child("##chat_names_content");
                     ChatNameTab.Draw();
                 }
             }
-            using (var tab = ImRaii.TabItem("Roles")) {
+            using (var tab = ImRaii.TabItem("职能")) {
                 if (tab) {
                     using var contents = ImRaii.Child("##static_assignments_content");
                     _staticAssignmentsTab.Draw();

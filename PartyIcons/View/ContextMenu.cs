@@ -65,9 +65,9 @@ public sealed class ContextMenu : IDisposable
         }
 
         if (_configuration.UseContextMenuSubmenu) {
-            var menuName = "设置职责";
+            var menuName = "设置职能";
             if (characterInfo.AssignedRole is { } assignedRole) {
-                menuName = $"更改职责 ({_stylesheet.GetRoleName(assignedRole)})";
+                menuName = $"更改职能 ({_stylesheet.GetRoleName(assignedRole)})";
             }
 
             args.AddMenuItem(new MenuItem

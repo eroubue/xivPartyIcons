@@ -545,10 +545,10 @@ public sealed class NameplateView : IDisposable
 
         var scale = _configuration.SizeMode switch
         {
-            NameplateSizeMode.Smaller => 0.6f,
-            NameplateSizeMode.Medium => 1f,
-            NameplateSizeMode.Bigger => 1.5f,
-            NameplateSizeMode.Custom => _configuration.SizeModeCustom,
+            NameplateSizeMode.小 => 0.6f,
+            NameplateSizeMode.中 => 1f,
+            NameplateSizeMode.大 => 1.5f,
+            NameplateSizeMode.自定义 => _configuration.SizeModeCustom,
             _ => 1f
         };
 

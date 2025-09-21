@@ -30,7 +30,7 @@ public class Settings : IPluginConfiguration
     public bool UsePriorityIcons = true;
 
     public IconSetId IconSetId { get; set; } = IconSetId.Gradient;
-    public NameplateSizeMode SizeMode { get; set; } = NameplateSizeMode.Medium;
+    public NameplateSizeMode SizeMode { get; set; } = NameplateSizeMode.中;
     public float SizeModeCustom { get; set; } = 1f;
 
     public NameplateMode NameplateOverworld { get; set; } = NameplateMode.SmallJobIcon;

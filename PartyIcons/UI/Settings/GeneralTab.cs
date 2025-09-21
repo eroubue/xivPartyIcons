@@ -13,7 +13,7 @@ namespace PartyIcons.UI.Settings;
 
 public sealed class GeneralTab
 {
-    private readonly Notice _notice = new();
+    
     private readonly FlashingText _flashingText = new();
 
     public void Draw()
@@ -24,11 +24,11 @@ public sealed class GeneralTab
             var usePriorityIcons = true;
             ImGui.Checkbox("##usePriorityIcons", ref usePriorityIcons);
             ImGui.SameLine();
-            ImGui.Text("Prioritize status icons");
+            ImGui.Text("优先状态图标");
             using (ImRaii.PushIndent())
             using (ImRaii.PushColor(ImGuiCol.Text, ImGuiColors.DalamudOrange)) {
                 ImGui.TextWrapped(
-                    "Note: Priority status icons are now configured per nameplate type from the 'Appearance' tab via the 'Swap Style' option. You can also configure which icons are considered important enough to prioritize in the 'Status Icons' tab.");
+                    "注意：优先级状态图标现在可通过“外观”选项卡中的“交换样式”选项按铭牌类型进行配置。您还可以在“状态图标”选项卡中配置哪些图标足够重要，需要优先显示。");
             }
             ImGui.Dummy(new Vector2(0, 3));
         }
@@ -41,9 +41,9 @@ public sealed class GeneralTab
 
         ImGui.SameLine();
         using (_flashingText.PushColor(Plugin.Settings.TestingMode)) {
-            ImGui.Text("Enable testing mode");
+            ImGui.Text("启用测试模式");
         }
-        ImGuiComponents.HelpMarker("Applies settings to any player, contrary to only the ones that are in the party.");
+        ImGuiComponents.HelpMarker("将设置应用于任何玩家,而不是只应用于队伍中的玩家.");
 
         var chatContentMessage = Plugin.Settings.ChatContentMessage;
 
@@ -53,77 +53,16 @@ public sealed class GeneralTab
         }
 
         ImGui.SameLine();
-        ImGui.Text("Display chat message when entering duty");
-        ImGuiComponents.HelpMarker("Can be used to determine the duty type before fully loading in.");
+        ImGui.Text("显示进入任务时的聊天信息");
+        ImGuiComponents.HelpMarker("可用于在完全加载前确定任务类型");
 
         ImGuiExt.Spacer(10);
-        if (ImGuiExt.ButtonEnabledWhen(ImGui.GetIO().KeyCtrl, "Show upgrade guide again")) {
+        if (ImGuiExt.ButtonEnabledWhen(ImGui.GetIO().KeyCtrl, "再次显示更新指南")) {
             UpgradeGuideTab.ForceRedisplay = true;
         }
-        ImGuiExt.HoverTooltip("Hold Control to allow clicking");
+        ImGuiExt.HoverTooltip("按住Crtl来允许点击");
 
-        _notice.DisplayNotice();
+        
     }
 }
 
-public sealed class Notice
-{
-    private string? _noticeString;
-    private string? _noticeUrl;
-
-    public Notice()
-    {
-        DownloadAndParseNotice();
-    }
-
-    private void DownloadAndParseNotice()
-    {
-        using var httpClient = new HttpClient();
-        try {
-            var strArray = httpClient.GetStringAsync("https://shdwp.github.io/ukraine/xiv_notice.txt").Result.Split('|');
-
-            if (strArray.Length > 0) {
-                _noticeString = strArray[0].Replace("\n", "\n\n");
-            }
-
-            if (strArray.Length < 2) {
-                return;
-            }
-
-            _noticeUrl = strArray[1];
-
-            if (!(_noticeUrl.StartsWith("http://") || _noticeUrl.StartsWith("https://"))) {
-                Service.Log.Warning($"Received invalid noticeUrl {_noticeUrl}, ignoring");
-                _noticeUrl = null;
-            }
-        }
-        catch (Exception) {
-            // ignored
-        }
-    }
-
-    public void DisplayNotice()
-    {
-        if (_noticeString == null)
-            return;
-
-        ImGui.Dummy(new Vector2(0.0f, 15f));
-
-        using var col = ImRaii.PushColor(ImGuiCol.Text, ImGuiColors.DPSRed);
-
-        ImGui.TextWrapped(_noticeString);
-
-        if (_noticeUrl != null && ImGui.Button(_noticeUrl)) {
-            try {
-                Process.Start(new ProcessStartInfo
-                {
-                    FileName = _noticeUrl,
-                    UseShellExecute = true
-                });
-            }
-            catch (Exception) {
-                // ignored
-            }
-        }
-    }
-}

@@ -28,9 +28,9 @@ public static class StatusTab
     {
         ImGuiExt.Spacer(2);
 
-        ImGui.TextDisabled("Configure status icon visibility based on location");
+        ImGui.TextDisabled("根据地图配置状态图标可见性");
 
-        ImGuiExt.SectionHeader("Presets");
+        ImGuiExt.SectionHeader("预设");
 
         List<Action> actions = [];
 
@@ -39,11 +39,11 @@ public static class StatusTab
         DrawStatusConfig(Plugin.Settings.StatusConfigs.FieldOperations, ref actions);
         DrawStatusConfig(Plugin.Settings.StatusConfigs.OverworldLegacy, ref actions);
 
-        ImGuiExt.SectionHeader("User-created");
+        ImGuiExt.SectionHeader("用户创建");
 
-        if (ImGui.Button("Create new")) {
+        if (ImGui.Button("创建新的")) {
             Plugin.Settings.StatusConfigs.Custom.Add(
-                new StatusConfig($"Custom status list {Plugin.Settings.StatusConfigs.Custom.Count + 1}"));
+                new StatusConfig($"自定义状态列表 {Plugin.Settings.StatusConfigs.Custom.Count + 1}"));
             Plugin.Settings.Save();
         }
 
@@ -60,7 +60,7 @@ public static class StatusTab
 
     private static void DrawStatusConfig(StatusConfig config, ref List<Action> actions)
     {
-        var textSize = ImGui.CalcTextSize("Important");
+        var textSize = ImGui.CalcTextSize("重要");
         var rowHeight = textSize.Y + ImGui.GetStyle().FramePadding.Y * 2;
         var iconSize = new Vector2(rowHeight, rowHeight);
         var buttonSize = new Vector2(textSize.X + ImGui.GetStyle().FramePadding.X * 2 + 10, rowHeight);
@@ -68,12 +68,12 @@ public static class StatusTab
 
         var sheet = Service.DataManager.GameData.GetExcelSheet<OnlineStatus>()!;
 
-        using (ImRaii.PushId($"status@{config.Preset}@{config.Id}")) {
+        using (ImRaii.PushId($"状态@{config.Preset}@{config.Id}")) {
             if (!ImGui.CollapsingHeader($"{UiNames.GetName(config)}###statusHeader@{config.Preset}@{config.Id}")) return;
 
             using (ImRaii.PushIndent(iconSize.X + ImGui.GetStyle().FramePadding.X + ImGui.GetStyle().ItemSpacing.X)) {
                 if (config.Preset == StatusPreset.Custom) {
-                    ImGui.TextDisabled("Name: ");
+                    ImGui.TextDisabled("名字: ");
 
                     ImGui.SameLine();
                     ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X - 10);
@@ -87,19 +87,19 @@ public static class StatusTab
                     }
                 }
 
-                ImGui.TextDisabled("Other actions: ");
+                ImGui.TextDisabled("其他动作: ");
                 if (config.Preset != StatusPreset.Custom) {
                     ImGui.SameLine();
-                    if (ImGuiExt.ButtonEnabledWhen(ImGui.GetIO().KeyCtrl, "Reset to default")) {
+                    if (ImGuiExt.ButtonEnabledWhen(ImGui.GetIO().KeyCtrl, "重置为默认")) {
                         config.Reset();
                         Plugin.Settings.Save();
                     }
 
-                    ImGuiExt.HoverTooltip("Hold Control to allow reset");
+                    ImGuiExt.HoverTooltip("按住Ctrl来允许重置");
                 }
                 else {
                     ImGui.SameLine();
-                    if (ImGuiExt.ButtonEnabledWhen(ImGui.GetIO().KeyCtrl, "Delete")) {
+                    if (ImGuiExt.ButtonEnabledWhen(ImGui.GetIO().KeyCtrl, "删除")) {
                         actions.Add(() =>
                         {
                             Plugin.Settings.DisplayConfigs.RemoveSelectors(config);
@@ -108,11 +108,11 @@ public static class StatusTab
                         });
                     }
 
-                    ImGuiExt.HoverTooltip("Hold Control to allow deletion");
+                    ImGuiExt.HoverTooltip("按住Ctrl来允许删除");
                 }
 
                 ImGui.SameLine();
-                if (ImGui.Button("Copy to new list")) {
+                if (ImGui.Button("复制到新的列表")) {
                     actions.Add(() =>
                     {
                         Plugin.Settings.StatusConfigs.Custom.Add(new StatusConfig(

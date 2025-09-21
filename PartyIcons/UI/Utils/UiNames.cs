@@ -14,9 +14,9 @@ public static class UiNames
             NameplateMode.Hide => "隐藏",
             NameplateMode.BigJobIcon => "大职业图标",
             NameplateMode.SmallJobIcon => "小职业图标和姓名",
-            NameplateMode.SmallJobIconAndRole => "小职业图标、职责和姓名",
+            NameplateMode.SmallJobIconAndRole => "小职业图标、职能和姓名",
             NameplateMode.BigJobIconAndPartySlot => "大职业图标和队伍编号",
-            NameplateMode.RoleLetters => "职责字母",
+            NameplateMode.RoleLetters => "职能字母",
             _ => $"未知 ({(int)mode}/{mode.ToString()})"
         };
     }
@@ -26,11 +26,11 @@ public static class UiNames
         return zoneType switch
         {
             ZoneType.Overworld => "大世界",
-            ZoneType.Dungeon => "地下城",
-            ZoneType.Raid => "团队任务",
-            ZoneType.AllianceRaid => "联盟团队任务",
-            ZoneType.ChaoticRaid => "野队团队任务",
-            ZoneType.FieldOperation => "野外作战",
+            ZoneType.Dungeon => "四人本",
+            ZoneType.Raid => "八人本",
+            ZoneType.AllianceRaid => "团本",
+            ZoneType.ChaoticRaid => "暗云团本",
+            ZoneType.FieldOperation => "特殊场景探索",
             _ => $"未知 ({(int)zoneType}/{zoneType.ToString()})"
         };
     }
@@ -71,9 +71,9 @@ public static class UiNames
     {
         return id switch
         {
-            IconSetId.EmbossedFramed => "带框架，职责着色",
-            IconSetId.EmbossedFramedSmall => "带框架，职责着色（小）",
-            IconSetId.Gradient => "渐变，职责着色",
+            IconSetId.EmbossedFramed => "带框架，职能着色",
+            IconSetId.EmbossedFramedSmall => "带框架，职能着色（小）",
+            IconSetId.Gradient => "渐变，职能着色",
             IconSetId.Glowing => "发光",
             IconSetId.Embossed => "浮雕",
             IconSetId.Inherit => "<使用全局设置>",
@@ -86,7 +86,7 @@ public static class UiNames
         return mode switch
         {
             ChatMode.GameDefault => "游戏默认",
-            ChatMode.Role => "职责",
+            ChatMode.Role => "职能",
             ChatMode.Job => "职业缩写",
             _ => throw new ArgumentException($"未知聊天模式 {mode}")
         };
@@ -97,9 +97,9 @@ public static class UiNames
         return style switch
         {
             RoleDisplayStyle.None => "无",
-            RoleDisplayStyle.Role => "职责",
+            RoleDisplayStyle.Role => "职能",
             RoleDisplayStyle.PartyNumber => "队伍编号",
-            _ => throw new ArgumentException($"未知职责显示样式 {style}")
+            _ => throw new ArgumentException($"未知职能显示样式 {style}")
         };
     }
 }

@@ -2,8 +2,8 @@
 
 public enum NameplateSizeMode
 {
-    Smaller,
-    Medium,
-    Bigger,
-    Custom
+    小,
+    中,
+    大,
+    自定义
 }

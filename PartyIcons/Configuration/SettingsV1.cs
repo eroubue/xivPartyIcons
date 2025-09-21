@@ -47,7 +47,7 @@ public class SettingsV1
     public bool UsePriorityIcons = true;
 
     public IconSetId IconSetId { get; set; } = IconSetId.Gradient;
-    public NameplateSizeMode SizeMode { get; set; } = NameplateSizeMode.Medium;
+    public NameplateSizeMode SizeMode { get; set; } = NameplateSizeMode.中;
 
     public NameplateMode NameplateOverworld { get; set; } = NameplateMode.SmallJobIcon;
     public NameplateMode NameplateAllianceRaid { get; set; } = NameplateMode.BigJobIconAndPartySlot;

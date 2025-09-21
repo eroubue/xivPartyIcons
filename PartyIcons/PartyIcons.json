@@ -1,11 +1,19 @@
 {
-  "Author": "shdwp, Avaflow, abashby, nebel",
+  "Author": "shdwp, Avaflow, abashby, nebel, Nag0mi",
   "Name": "Party Icons",
-  "Punchline": "Replace names with job icons, raid role positions and more!",
-  "Description": "Adjusts player nameplates base on current content. For example you can display raid positions (that are assigned automatically by listening to the chat), job icons, or names with job icons.\n\nReverse-engineering effort achieved by authors of JobIcons: haplo, daemitus, Loskh, wozaiha, without them this plugin would not be possible!",
   "InternalName": "PartyIcons",
-  "RepoUrl": "https://github.com/nebel/xivPartyIcons",
+  "AssemblyVersion": "1.2.3.1",
+  "Punchline": "用职业图标、职能位置等替换名称",
+  "Description": "根据当前内容调整玩家铭牌。例如，您可以显示团队位置（通过监听聊天自动分配）、职业图标或带有职业图标的名称。",
+  "ApplicableVersion": "any",
+  "RepoUrl": "https://github.com/eroubue/xivPartyIcons",
   "Tags": [
     "UI"
-  ]
+  ],
+  "DalamudApiLevel": 13,
+  "LoadRequiredState": 0,
+  "LoadSync": false,
+  "CanUnloadAsync": false,
+  "LoadPriority": 0,
+  "AcceptsFeedback": true
 }
